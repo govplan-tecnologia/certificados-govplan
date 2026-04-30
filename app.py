@@ -6,9 +6,11 @@ import os
 app = Flask(__name__)
 
 PALAVRA_CHAVE_CORRETA = "govplan"
-MINISTRANTE_FIXO = "Abimael Torcatê"
-DATA_EVENTO_FIXA = "19 de janeiro de 2026"
+
+MINISTRANTE_FIXO = "Renato Fenili e Viviiane Mafissoni"
+DATA_EVENTO_FIXA = "12 de maio de 2026"
 CARGA_HORARIA_FIXA = "4"
+
 ARQUIVO_CSV = "respostas.csv"
 
 
@@ -45,10 +47,10 @@ def certificado():
     if palavra_chave.lower() != PALAVRA_CHAVE_CORRETA.lower():
         return render_template(
             "formulario.html",
-            erro="Palavra-chave incorreta. Verifique a informação passada na oficina e tente novamente."
+            erro="Palavra-chave incorreta. Verifique a informação passada no evento e tente novamente."
         )
 
-    codigo_certificado = datetime.now().strftime("CERT-PCA-2026-%Y%m%d%H%M%S")
+    codigo_certificado = datetime.now().strftime("CERT-GOVPLAN-DAY-SP-2026-%Y%m%d%H%M%S")
 
     dados_resposta = {
         "data_hora_resposta": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
