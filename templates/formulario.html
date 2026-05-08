@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Pesquisa da Oficina + Certificado</title>
+  <title>Pesquisa Govplan</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=DM+Serif+Display&display=swap" rel="stylesheet">
@@ -132,6 +132,31 @@
       box-shadow: 0 0 0 4px rgba(2, 34, 83, 0.12);
     }
 
+    .checkbox-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      background: #f8fbff;
+      padding: 15px;
+      border-radius: 14px;
+      border: 1px solid var(--azul-borda);
+    }
+
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .checkbox-item input {
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+    }
+
     .hint {
       margin-top: 6px;
       font-size: 12px;
@@ -254,6 +279,10 @@
       .hero-logo {
         width: 200px;
       }
+
+      .checkbox-group {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 560px) {
@@ -285,8 +314,7 @@
       <div class="hero-header">
         <img src="../static/img/logo_govplan.png" alt="Govplan" class="hero-logo">
         <div class="hero-texto">
-          <h1>Pesquisa da Oficina</h1>
-          <p>Preencha as informações abaixo e gere seu certificado.</p>
+          <h1>Pesquisa Govplan</h1>
         </div>
       </div>
     </div>
@@ -323,50 +351,59 @@
           </div>
 
           <div class="field">
-            <label for="pca">Já fez PCA?</label>
-            <select id="pca" name="pca" required>
+            <label for="pca_estruturado">1. Seu órgão já possui Plano de Contratação Anual estruturado?</label>
+            <select id="pca_estruturado" name="pca_estruturado" required>
+              <option value="">Selecione</option>
+              <option>Sim</option>
+              <option>Parcialmente</option>
+              <option>Ainda não</option>
+              <option>Estamos iniciando</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="planejamento_atual">2. Como o planejamento das contratações é realizado atualmente?</label>
+            <select id="planejamento_atual" name="planejamento_atual" required>
+              <option value="">Selecione</option>
+              <option>Planilhas</option>
+              <option>Sistema próprio</option>
+              <option>PGC</option>
+              <option>Processo manual</option>
+              <option>Outro</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>3. Quais os maiores desafios do seu órgão hoje? (Pode marcar mais de uma opção)</label>
+            <div class="checkbox-group">
+              <label class="checkbox-item"><input type="checkbox" name="desafios" value="Levantamento das demandas"> Levantamento das demandas</label>
+              <label class="checkbox-item"><input type="checkbox" name="desafios" value="Consolidação das informações"> Consolidação das informações</label>
+              <label class="checkbox-item"><input type="checkbox" name="desafios" value="Controle de prazos"> Controle de prazos</label>
+              <label class="checkbox-item"><input type="checkbox" name="desafios" value="Governança das contratações"> Governança das contratações</label>
+              <label class="checkbox-item"><input type="checkbox" name="desafios" value="Integração entre setores"> Integração entre setores</label>
+              <label class="checkbox-item"><input type="checkbox" name="desafios" value="Execução do PCA"> Execução do PCA</label>
+              <label class="checkbox-item"><input type="checkbox" name="desafios" value="Capacitação da equipe"> Capacitação da equipe</label>
+              <label class="checkbox-item"><input type="checkbox" name="desafios" value="Outro"> Outro</label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="ferramenta_pca">4. Seu órgão já utiliza alguma ferramenta para gestão do PCA?</label>
+            <select id="ferramenta_pca" name="ferramenta_pca" required>
               <option value="">Selecione</option>
               <option>Sim</option>
               <option>Não</option>
+              <option>Em avaliação</option>
             </select>
           </div>
 
           <div class="field">
-            <label for="publicou">Já publicou o PCA 2026?</label>
-            <select id="publicou" name="publicou" required>
-              <option value="">Selecione</option>
-              <option>Já publiquei</option>
-              <option>Não publiquei</option>
-              <option>Vou fazer para 2027</option>
-            </select>
-          </div>
-
-          <div class="field">
-            <label for="primeira_vez">Foi sua primeira vez na oficina?</label>
-            <select id="primeira_vez" name="primeira_vez" required>
+            <label for="receber_proposta">5. Quer receber proposta Govplan?</label>
+            <select id="receber_proposta" name="receber_proposta" required>
               <option value="">Selecione</option>
               <option>Sim</option>
               <option>Não</option>
-            </select>
-          </div>
-
-          <div class="field">
-            <label for="gestao">Tem conseguido fazer a gestão do PCA?</label>
-            <select id="gestao" name="gestao" required>
-              <option value="">Selecione</option>
-              <option>Sim</option>
-              <option>Não</option>
-              <option>Mais ou menos</option>
-            </select>
-          </div>
-
-          <div class="field">
-            <label for="interesse">Receber proposta Govplan</label>
-            <select id="interesse" name="interesse" required>
-              <option value="">Selecione</option>
-              <option>Proposta Govplan</option>
-              <option>Reunião para diagnóstico do PCA</option>
-              <option>Sem interesse</option>
+              <option>Já sou assinante</option>
             </select>
           </div>
 
@@ -377,13 +414,13 @@
               id="palavra_chave"
               name="palavra_chave"
               required
-              placeholder="Digite a palavra-chave informada na oficina"
+              placeholder="Digite a palavra-chave informada"
             >
             <div class="hint">O certificado será gerado somente se a palavra-chave estiver correta.</div>
           </div>
 
           <div class="field">
-            <label>Avaliação geral da oficina</label>
+            <label>Avaliação geral do evento</label>
             <div class="avaliacao-box">
               <div class="avaliacao-topo">
                 <span>Selecione uma nota de 1 a 10</span>

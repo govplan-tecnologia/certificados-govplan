@@ -36,11 +36,17 @@ def certificado():
     nome = request.form.get("nome", "").strip()
     orgao = request.form.get("orgao", "").strip()
     uf = request.form.get("uf", "").strip()
-    pca = request.form.get("pca", "").strip()
-    publicou = request.form.get("publicou", "").strip()
-    primeira_vez = request.form.get("primeira_vez", "").strip()
-    gestao = request.form.get("gestao", "").strip()
-    interesse = request.form.get("interesse", "").strip()
+    
+    # Novos campos
+    pca_estruturado = request.form.get("pca_estruturado", "").strip()
+    planejamento_atual = request.form.get("planejamento_atual", "").strip()
+    # Desafios é um checkbox (múltipla escolha)
+    desafios = request.form.getlist("desafios")
+    desafios_str = ", ".join(desafios)
+    
+    ferramenta_pca = request.form.get("ferramenta_pca", "").strip()
+    receber_proposta = request.form.get("receber_proposta", "").strip()
+    
     avaliacao = request.form.get("avaliacao", "").strip()
     palavra_chave = request.form.get("palavra_chave", "").strip()
 
@@ -57,11 +63,11 @@ def certificado():
         "nome": nome,
         "orgao": orgao,
         "uf": uf,
-        "ja_fez_pca": pca,
-        "publicou_pca_2026": publicou,
-        "primeira_vez_oficina": primeira_vez,
-        "gestao_pca": gestao,
-        "interesse_govplan": interesse,
+        "pca_estruturado": pca_estruturado,
+        "planejamento_atual": planejamento_atual,
+        "desafios": desafios_str,
+        "ferramenta_pca": ferramenta_pca,
+        "receber_proposta": receber_proposta,
         "palavra_chave_informada": palavra_chave,
         "avaliacao": avaliacao,
         "codigo_certificado": codigo_certificado,
