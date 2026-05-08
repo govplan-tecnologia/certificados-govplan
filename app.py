@@ -7,7 +7,8 @@ app = Flask(__name__)
 
 PALAVRA_CHAVE_CORRETA = "govplan"
 
-MINISTRANTE_FIXO = "Renato Fenili e Viviiane Mafissoni"
+# Atualizado conforme solicitado
+MINISTRANTE_FIXO = "Renato Fenili e Viviane Mafissoni"
 DATA_EVENTO_FIXA = "12 de maio de 2026"
 CARGA_HORARIA_FIXA = "4"
 
@@ -37,10 +38,11 @@ def certificado():
     orgao = request.form.get("orgao", "").strip()
     uf = request.form.get("uf", "").strip()
     
-    # Novos campos
+    # Novos campos da Pesquisa Govplan
     pca_estruturado = request.form.get("pca_estruturado", "").strip()
     planejamento_atual = request.form.get("planejamento_atual", "").strip()
-    # Desafios é um checkbox (múltipla escolha)
+    
+    # Desafios (múltipla escolha)
     desafios = request.form.getlist("desafios")
     desafios_str = ", ".join(desafios)
     
@@ -58,6 +60,7 @@ def certificado():
 
     codigo_certificado = datetime.now().strftime("CERT-GOVPLAN-DAY-SP-2026-%Y%m%d%H%M%S")
 
+    # Dicionário atualizado com os novos campos para o CSV
     dados_resposta = {
         "data_hora_resposta": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         "nome": nome,
